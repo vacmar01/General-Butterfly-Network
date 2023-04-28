@@ -145,11 +145,11 @@ class BtrflyNetXV(nn.Module):
         channels.insert(4, n_inp*channels[3])
         channels.insert(5, n_inp*channels[3])
         self.n_inp = n_inp
-        self.input_arms = [in_arm(channels)]*self.n_inp
+        self.input_arms = nn.ModuleList([in_arm(channels)]*self.n_inp)
         self.input_arm_cor = in_arm(channels)
         self.input_arm_ax = in_arm(channels)
         self.body = bodyXV(channels)
-        self.output_arms = [out_arm(channels)]*self.n_inp
+        self.output_arms = nn.ModuleList([out_arm(channels)]*self.n_inp)
         self.output_arm_cor = out_arm(channels)
         self.output_arm_ax = out_arm(channels)
 
